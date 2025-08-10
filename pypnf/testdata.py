@@ -21,7 +21,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 from importlib.resources import files
-from numpy import recfromcsv
+from numpy import genfromtxt
 """
 The testdata module contains different sets of testdata.
 """
@@ -36,7 +36,7 @@ def dataset(set):
         file = 'data/' + set + '.csv'
 
         path = files('pypnf').joinpath(file)
-        data = recfromcsv(path, encoding='utf-8')
+        data = genfromtxt(path, delimiter=',', names=True, dtype=None, encoding='utf-8')
 
         ts = {'date': [],
               'open': [],
